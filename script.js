@@ -45,7 +45,7 @@ const generatePassword = () => {
 //Confirm object is what we need for the prompts that ask if the user would like a certain character for their new pw.
 const pwCriteria = () => {
 
-  let pwCombo;
+  let pwCombo
   let enableLower = confirm("Would you like Lowercase letters in your password?")
   let enableUpper = confirm("Would you like to have Uppercase letters in your password?")
   let enableNumber = confirm("Would you like to have Numbers in your password?")
@@ -122,7 +122,14 @@ const pwCriteria = () => {
   return pwCombo
 }
 
+const createdPW = (pwLength, pwCriteria) => {
+  let randomPW = []
+  //created variable randomPW as an empty array that will store our new password.
+  for (let i = 0; i < pwLength; i++) {
+    let newPW = pwCriteria[Math.floor(Math.random() * pwCriteria.length - 1)]
+    randomPW.push(newPW)
+  }
 
-function generatePassword() {
-  return
+let finalizedPW = randomPW.join("")
+  return finalizedPW;
 }
