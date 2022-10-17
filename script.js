@@ -16,7 +16,7 @@ const writePassword = () => {
   const pwLength = generatePassword()
   const pwCriteria = passwordCriteria()
 
-  let password = randoPW(pwLength, pwCriteria);
+  let password = createdPW(pwLength, pwCriteria);
   let passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -27,21 +27,22 @@ const writePassword = () => {
 generateBtn.addEventListener("click", writePassword);
 
 //Define the constants in the above function.
-//Figured out how to do the window prompt thing!!!!
+//Figured out how to do the window prompt thing!!!! --> window.prompt() is not necessary, can just be prompt.()
 // Implemented "while" loop with ternary operators in order to let the users know if their request exists outside of the acceptable criteria and pop-up an "alert" explaining what their error is/was.
 const generatePassword = () => {
-  let pwLength = window.prompt("How many characters would you like your password to contain?")
+  let pwLength = prompt("How many characters would you like your password to contain?")
 
   while (pwLength <= 7 || pwLength >= 129) {
     alert("Password *must* be between 8 and 128 characters in length.")
     
-    pwLength = window.prompt("How many characters would you like your new password to contain?")
+    pwLength = prompt("How many characters would you like your new password to contain?")
   }
   return pwLength;
 }
 
 //Define constant of "pwCriteria" and creating if/else if statements for all items requested by the acceptance criteria.
 //Continuing usage of arrow functions.
+//Confirm object is what we need for the prompts that ask if the user would like a certain character for their new pw.
 const pwCriteria = () => {
 
   let pwCombo;
@@ -49,7 +50,34 @@ const pwCriteria = () => {
   let enableUpper = confirm("Would you like to have Uppercase letters in your password?")
   let enableNumber = confirm("Would you like to have Numbers in your password?")
   let enableSpecial = confirm("Would you like to have Special Characters in your password?")
-  
+
+
+  // waterfall of if statements to check for any and all combinations of possible user selections.
+  if (!enableLower && !enableUpper && !enableNumber && !enableSpecial) {
+    alert("At least one (1) criteria must be selected.")
+    //as the string above implies, this is to see if any of the criteria were selected, if not (as denoted by the ! in front of the let variable name) then an alert pops up with instructions/details.
+  }
+
+  else if (enableLower && enableUpper && enableNumber && enableSpecial) {
+    pwCombo = aLow.concat(aUp, numbers, spChar)
+    //creates PW based on the selection of all character options.
+  }
+
+  else if (enableLower && enableUpper && enableNumber) {
+    pwCombo = aLow.concat(aUp, numbers)
+    //Creates PW combo based on selection of Lowercase letters, Uppercase letters, and Numbers
+  }
+
+  else if (enableLower && enableUpper && enableSpecial) {
+    pwCombo = aLow.concat(aUp, spChar)
+    // PW combo based on lower, upper, and special characters.
+  }
+
+  else if (enableLower && enableNumber && enableSpecial) {
+    pwCombo = aLow.concat(numbers, spChar)
+    // PW combo based on lower, numbers, and special characters. ****This should be all of them, I believe****
+  }
+
 }
 
 
