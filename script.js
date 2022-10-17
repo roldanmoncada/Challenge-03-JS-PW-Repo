@@ -28,8 +28,28 @@ generateBtn.addEventListener("click", writePassword);
 
 //Define the constants in the above function.
 //Figured out how to do the window prompt thing!!!!
+// Implemented "while" loop with ternary operators in order to let the users know if their request exists outside of the acceptable criteria and pop-up an "alert" explaining what their error is/was.
 const generatePassword = () => {
   let pwLength = window.prompt("How many characters would you like your password to contain?")
+
+  while (pwLength <= 7 || pwLength >= 129) {
+    alert("Password *must* be between 8 and 128 characters in length.")
+    
+    pwLength = window.prompt("How many characters would you like your new password to contain?")
+  }
+  return pwLength;
+}
+
+//Define constant of "pwCriteria" and creating if/else if statements for all items requested by the acceptance criteria.
+//Continuing usage of arrow functions.
+const pwCriteria = () => {
+
+  let pwCombo;
+  let enableLower = confirm("Would you like Lowercase letters in your password?")
+  let enableUpper = confirm("Would you like to have Uppercase letters in your password?")
+  let enableNumber = confirm("Would you like to have Numbers in your password?")
+  let enableSpecial = confirm("Would you like to have Special Characters in your password?")
+  
 }
 
 
