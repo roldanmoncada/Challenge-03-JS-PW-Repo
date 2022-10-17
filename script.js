@@ -103,7 +103,23 @@ const pwCriteria = () => {
     pwCombo = numbers.concat(spChar)
   }
 
-  
+// this next chuck is of the else/if statements consisting of just one criteria selected by the user.
+  else if (enableLower) {
+    pwCombo = aLow 
+  }
+
+  else if (enableUpper) {
+    pwCombo = aUp
+  }
+
+  else if (enableNumber) {
+    pwCombo = numbers
+  }
+
+  else if (enableSpecial) {
+    pwCombo = spChar
+  }
+  return pwCombo
 }
 
 
