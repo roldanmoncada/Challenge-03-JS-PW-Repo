@@ -75,9 +75,35 @@ const pwCriteria = () => {
 
   else if (enableLower && enableNumber && enableSpecial) {
     pwCombo = aLow.concat(numbers, spChar)
-    // PW combo based on lower, numbers, and special characters. ****This should be all of them, I believe****
+    // PW combo based on lower, numbers, and special characters.
   }
 
+//this next chunk is of the else if statements consisting of two criteria chosen by the user.
+  else if (enableLower && enableUpper) {
+    pwCombo = aLow.concat(aUp)
+  }
+    
+  else if (enableLower && enableNumber) {
+    pwCombo = aLow.concat(numbers)
+  }
+
+  else if (enableLower && enableSpecial) {
+    pwCombo = aLow.concat(spChar)
+  }
+
+  else if (enableUpper && enableNumber) {
+    pwCombo = aUp.concat(numbers)
+  }
+
+  else if (enableUpper && enableSpecial) {
+    pwCombo = aUp.concat(spChar)
+  }
+
+  else if (enableNumber && enableSpecial) {
+    pwCombo = numbers.concat(spChar)
+  }
+
+  
 }
 
 
