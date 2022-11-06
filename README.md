@@ -1,7 +1,7 @@
 # Challenge-03-JS-PW-Repo
 
 ## <ins>Description: </ins>
-    This challenge is to create a random password generator that is secure according to the acceptance criteria. The code for the challenge is rather straightforward in terms of functionality but I am having a very hard time with the prompt boxes portion of it. ~~Will update with more as it comes.~~
+    This challenge is to create a random password generator that is secure according to the acceptance criteria. The code for the challenge is rather straightforward in terms of functionality but I am having a very hard time with the prompt boxes portion of it.
 
     Revisiting this after project 1. There was a lot of issues here that I saw and had help with from an AskBCS assistant. Used const and didn't call the function properly. Funny to revisit this after day 1 of node.js where Byron taught us about arrow functions officially. The website now works as expected. Woo!
 
