@@ -139,3 +139,5 @@ generateBtn.addEventListener("click", ()=>{
   let pool = pwCriteria();
   let value = createdPW(length, pool);
   document.getElementById('password').textContent = value});
+
+  //stopped working out of nowhere but now works. pushing to github asap.
