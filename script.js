@@ -12,33 +12,22 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 // researched the benefit of the "let" variables vs "var" variables. Main benefit is the fact that "let" localizes the variable to the ensuing code block, if I understood it correctly. Also, it creates a local variable which can reduce confusion if all variables had been globalized previously. The use of const applies here as well, especially given the new context of "let" being best for variables localized to a particular block of code.
 // discovered benefits of arrow functions. 
-const writePassword = () => {
-  const pwLength = generatePassword()
-  const pwCriteria = passwordCriteria()
+// const writePassword = () => {
+//   const pwLength = generatePassword()
+//   const pwCriteria = pwCriteria()
 
-  let password = createdPW(pwLength, pwCriteria);
-  let passwordText = document.querySelector("#password");
+//   let password = createdPW(pwLength, pwCriteria);
+//   let passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+//   passwordText.value = password;
 
-}
+// 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 //Define the constants in the above function.
 //Figured out how to do the window prompt thing!!!! --> window.prompt() is not necessary, can just be prompt.()
 // Implemented "while" loop with ternary operators in order to let the users know if their request exists outside of the acceptable criteria and pop-up an "alert" explaining what their error is/was.
-const generatePassword = () => {
-  let pwLength = prompt("How many characters would you like your password to contain?")
-
-  while (pwLength <= 7 || pwLength >= 129) {
-    alert("Password *must* be between 8 and 128 characters in length.")
-    
-    pwLength = prompt("How many characters would you like your new password to contain?")
-  }
-  return pwLength;
-}
 
 //Define constant of "pwCriteria" and creating if/else if statements for all items requested by the acceptance criteria.
 //Continuing usage of arrow functions.
@@ -51,34 +40,33 @@ const pwCriteria = () => {
   let enableNumber = confirm("Would you like to have Numbers in your password?")
   let enableSpecial = confirm("Would you like to have Special Characters in your password?")
 
-
   // waterfall of if statements to check for any and all combinations of possible user selections.
   if (!enableLower && !enableUpper && !enableNumber && !enableSpecial) {
     alert("At least one (1) criteria must be selected.")
     //as the string above implies, this is to see if any of the criteria were selected, if not (as denoted by the ! in front of the let variable name) then an alert pops up with instructions/details.
   }
-
+  
   else if (enableLower && enableUpper && enableNumber && enableSpecial) {
     pwCombo = aLow.concat(aUp, numbers, spChar)
     //creates PW based on the selection of all character options.
   }
-
+  
   else if (enableLower && enableUpper && enableNumber) {
     pwCombo = aLow.concat(aUp, numbers)
     //Creates PW combo based on selection of Lowercase letters, Uppercase letters, and Numbers
   }
-
+  
   else if (enableLower && enableUpper && enableSpecial) {
     pwCombo = aLow.concat(aUp, spChar)
     // PW combo based on lower, upper, and special characters.
   }
-
+  
   else if (enableLower && enableNumber && enableSpecial) {
     pwCombo = aLow.concat(numbers, spChar)
     // PW combo based on lower, numbers, and special characters.
   }
 
-//this next chunk is of the else if statements consisting of two criteria chosen by the user.
+  //this next chunk is of the else if statements consisting of two criteria chosen by the user.
   else if (enableLower && enableUpper) {
     pwCombo = aLow.concat(aUp)
   }
@@ -94,7 +82,7 @@ const pwCriteria = () => {
   else if (enableUpper && enableNumber) {
     pwCombo = aUp.concat(numbers)
   }
-
+  
   else if (enableUpper && enableSpecial) {
     pwCombo = aUp.concat(spChar)
   }
@@ -103,7 +91,7 @@ const pwCriteria = () => {
     pwCombo = numbers.concat(spChar)
   }
 
-// this next chuck is of the else/if statements consisting of just one criteria selected by the user.
+  // this next chuck is of the else/if statements consisting of just one criteria selected by the user.
   else if (enableLower) {
     pwCombo = aLow 
   }
@@ -133,3 +121,21 @@ const createdPW = (pwLength, pwCriteria) => {
 let finalizedPW = randomPW.join("")
   return finalizedPW;
 }
+
+
+const generatePassword = () => {
+  let pwLength = prompt("How many characters would you like your password to contain?")
+
+  while (pwLength <= 7 || pwLength >= 129) {
+    alert("Password *must* be between 8 and 128 characters in length.")
+    
+    pwLength = prompt("How many characters would you like your new password to contain?")
+  }
+  return pwLength;
+}
+
+generateBtn.addEventListener("click", ()=>{
+  let length= generatePassword();
+  let pool = pwCriteria();
+  let value = createdPW(length, pool);
+  document.getElementById('password').textContent = value});

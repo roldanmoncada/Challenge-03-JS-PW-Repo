@@ -1,7 +1,9 @@
 # Challenge-03-JS-PW-Repo
 
 ## <ins>Description: </ins>
-    This challenge is to create a random password generator that is secure according to the acceptance criteria. The code for the challenge is rather straightforward in terms of functionality but I am having a very hard time with the prompt boxes portion of it. Will update with more as it comes.
+    This challenge is to create a random password generator that is secure according to the acceptance criteria. The code for the challenge is rather straightforward in terms of functionality but I am having a very hard time with the prompt boxes portion of it. ~~Will update with more as it comes.~~
+
+    Revisiting this after project 1 
 
 
 ## <ins>User Story: </ins>
